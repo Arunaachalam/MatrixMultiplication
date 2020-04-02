@@ -13,5 +13,5 @@ Loop Unrolling - By using the AVX architecture vectorization can be done to incr
 
 Blocking - By using the size of cache memory of a processor, the rate of cache misses can be reduced by using the technique of dividing and conquering, where the matrices are divided into smaller chunks with memory which are able to fit a cache usually 256 kB or 512 kB. [O(n³)]
 
-Strassen-Winograd - By using an algorithm which reduces the order of computation, the computation time can be reduced. [O(pow(n,2.7))]
+Strassen-Winograd - By using an algorithm which reduces the order of computation, the computation time can be reduced. [O(pow(n,2.807))]
 
