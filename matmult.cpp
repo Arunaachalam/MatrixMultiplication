@@ -54,7 +54,7 @@ int main(int argc, char** argv)
     
     //Choose the Algorithm to execute
     
-    std::cout <<  "Which Algorithm would you like to use for multiplying the matrix?\n 1) Normal multiplication as in beginners book\n2) Efficient multiplication by reducing catch misses (inverse loop/transpose matrix Algorithm)\n3) Two-Way Loop Unrolling (Only for AVX capable Systems)\n4) Four-way loop unrolling (Only for AVX capable Systems) 5) Blocked Algorithm for L2 Cache leven\n6) Blocked Algorithm for L1 Cache level\n7) Fastest Algorithm: Strassen\n 8) BLAS standard in your computer (The fastest possible)\n Enter your option (1-8): " << std::endl;
+    std::cout <<  "Which Algorithm would you like to use for multiplying the matrix?\n1) Normal multiplication as in beginners book\n2) Efficient multiplication by reducing catch misses (inverse loop/transpose matrix Algorithm)\n3) Two-Way Loop Unrolling (Only for AVX capable Systems)\n4) Four-way loop unrolling (Only for AVX capable Systems)\n5) Blocked Algorithm for L2 Cache leven\n6) Blocked Algorithm for L1 Cache level\n7) Fastest Algorithm: Strassen\n8) BLAS standard in your computer (The fastest possible)\n Enter your option (1-8): " << std::endl;
     
     int option = 8;
     
@@ -67,7 +67,6 @@ int main(int argc, char** argv)
     }
     
     
-    //Checker = 10; // uncomment for BLAS 
     Matmult Mult(F1.Arowval(),F1.Acolumnval(),F1.Browval(),F1.Bcolumnval(),F1.Crowval(),F1.Ccolumnval(),F1.file1(),F1.file2(),F1.file3());
 
     #ifdef USE_LIKWID
@@ -171,14 +170,16 @@ int main(int argc, char** argv)
     
     //Check the Matrix result for correctness
     
-    /*  siwir::Timer timer6;
+    ProgTimer::Timer timer3;
     bool result = Mult.Checkresult();
-    double time5 = timer6.elapsed();
-    std::cout << "Time taken to check the result matrix: " << time5 << std::endl;
+    double time3 = timer3.elapsed();
+    std::cout << "Time taken to check the result matrix: " << time3 << std::endl;
     if(result)
 	std::cout << "Matrix Multiplication is a success" << std::endl;
     else
-    std::cout << "Something Went Wrong :(" << std::endl;*/
+    std::cout << "Something Went Wrong :(" << std::endl;
+    
+    //Overall Program Run Time
     double time4 = overalltime.elapsed();
     std::cout << "Time for overall completion of the program: " << time4 << std::endl;
 
