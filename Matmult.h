@@ -499,7 +499,6 @@ void inline Matmult::strassen(double *C,double *A,double *B,const int size1,cons
              }
          delete[] R1;
          delete[] R2;
-        // std::cout<<"Time elapsed for strassen="<<time.elapsed()<<std::endl;
 
         }
 
