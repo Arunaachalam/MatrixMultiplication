@@ -23,12 +23,12 @@ public:
   void naivematrixmultiplyreverseloop();
   void loopunrollmatrixmultiply();
   void fourloopunrollmultiply();
-  void blockingmultiply();
+  void blockingmultiplyL1();
+  void blockingmultiplyL2();
   void strassenmultiply();
   void Blas();
   void inline strassen(double *C,double *A,double *B,const int size1,const int size2,const int size3,const int size);
   void Creturn();
-
   bool Checkresult();
 
 
