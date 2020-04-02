@@ -50,9 +50,9 @@ int main(int argc, char** argv)
     
     //Choose the Algorithm to execute
     
-    std::cout <<  "Which Algorithm would you like to use for multiplying the matrix?\n 1) Normal multiplication as in beginners book\n2) Efficient multiplication by reducing catch misses (inverse loop/transpose matrix Algorithm)\n3) Blocked Algorithm for L2 Cache 4) Blocked Algorithm for L1 Cache\n5) Fastest Algorithm: Strassen\n 6) BLAS standard in your computer (The fastest possible)\n Enter your option (1-6): " << std::endl;
+    std::cout <<  "Which Algorithm would you like to use for multiplying the matrix?\n 1) Normal multiplication as in beginners book\n2) Efficient multiplication by reducing catch misses (inverse loop/transpose matrix Algorithm)\n3) Two-Way Loop Unrolling (Only for AVX capable Systems)\n4) Four-way loop unrolling (Only for AVX capable Systems) 5) Blocked Algorithm for L2 Cache leven\n6) Blocked Algorithm for L1 Cache level\n7) Fastest Algorithm: Strassen\n 8) BLAS standard in your computer (The fastest possible)\n Enter your option (1-8): " << std::endl;
     
-    int option = 1;
+    int option = 8;
     
     if (std::cin>>option)
         std::cout <<  "\n\n\nYou chose the option: " << option << ". Performing the calculations:\n\n\n" << std::endl;
