@@ -15,3 +15,12 @@ Blocking - By using the size of cache memory of a processor, the rate of cache m
 
 Strassen-Winograd - By using an algorithm which reduces the order of computation, the computation time can be reduced. [O(pow(n,2.807))]
 
+
+Procedure:
+
+Commands	- make //creates executive file
+		- ./matmult [matrix1] [matrix2] [validation]
+
+	matrix1 - Input A matrix
+	matrix2 - Input B matrix
+	validation - Result matrix for validation
