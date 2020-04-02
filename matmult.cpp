@@ -1,9 +1,13 @@
 /*
 Matrix multiplication Options
-1 - 
-2 - 
-3 - 
-4 -
+1 - Naive Matrix Multiplication
+2 - Naive Matrix Reverse Loop Multiplication
+3 - Two-way loop unrolling (only for AVX capable systems)
+4 - Four-way loop unrolling (only for AVX capable systems)
+5 - Blocking algorithm for L2 cache level
+6 - Blocking algorithm for L1 cache level
+7 - Strassen-Winograd algorithm
+8 - BLAS implementation
 
 */
 
@@ -79,40 +83,83 @@ int main(int argc, char** argv)
 
     if (option == 1)
     {
-    std::cout << "Strassen Algorithm is Implemented" << std::endl;
-    ProgTimer:: Timer timer2;
-    Mult.strassenmultiply();
-    double time2 = timer2.elapsed();
-    Mult.Creturn();
-    std::cout << "Time taken to do Strassen Algorithm(Winograd Variant) Matrix multiplication: " << time2 << std::endl;
+        std::cout << "Regular Matrix Multiplication Algorithm is Used" << std::endl;
+        ProgTimer:: Timer timer1;
+        Mult.naivematrixmultiply();
+        double time1 = timer1.elapsed();
+        Mult.Creturn();
+        std::cout << "Time taken to complete the computation: " << time1 << std::endl;
     }
     else if (option == 2)
     {
-        std::cout << "Blocking Algorithm is Implemented" << std::endl;
-        ProgTimer:: Timer timer3;
-        Mult.blockingmultiply();
-        double time3 = timer3.elapsed();
-        std::cout << "Time taken to do Blocking Altorithm Matrix multiplication: " << time3 << std::endl;
+        std::cout << "Transpose Matrix Multiplication Algorithm is Used" << std::endl;
+        ProgTimer:: Timer timer1;
+        Mult.naivematrixmultiplyreverseloop();
+        double time1 = timer1.elapsed();
+        Mult.Creturn();
+        std::cout << "Time taken to complete the computation: " << time1 << std::endl;
     }
-       else if (option == 10) // need to manually set the checker to 10
+    else if (option == 3)
     {
-          ProgTimer::Timer timer7;
-          std::cout << "BLAS is implemented" << std::endl;
-          Mult.Blas();
-          double time3 = timer7.elapsed();
-          std::cout << "Time taken to do BLAS Multiplication: " << time3 << std::endl;
-
-	  }
+        std::cout << "Two-Way Loop unroll Algorithm is Used" << std::endl;
+        ProgTimer:: Timer timer1;
+        Mult.loopunrollmatrixmultiply();
+        double time1 = timer1.elapsed();
+        Mult.Creturn();
+        std::cout << "Time taken to complete the computation: " << time1 << std::endl;
+    }
+    else if (option == 4)
+    {
+        std::cout << "Four-Way Loop unroll Algorithm is Used" << std::endl;
+        ProgTimer:: Timer timer1;
+        Mult.fourloopunrollmultiply();
+        double time1 = timer1.elapsed();
+        Mult.Creturn();
+        std::cout << "Time taken to complete the computation: " << time1 << std::endl;
+    }
+    else if (option == 5)
+    {
+        std::cout << "Blocking Algorithm for L2 Cache is Used" << std::endl;
+        ProgTimer:: Timer timer1;
+        Mult.blockingmultiplyL2();
+        double time1 = timer1.elapsed();
+        Mult.Creturn();
+        std::cout << "Time taken to complete the computation: " << time1 << std::endl;
+    }
+    else if (option == 6)
+    {
+        std::cout << "BLocking Algorithm for L1 Cache is used" << std::endl;
+        ProgTimer:: Timer timer1;
+        Mult.blockingmultiplyL1();
+        double time1 = timer1.elapsed();
+        Mult.Creturn();
+        std::cout << "Time taken to complete the computation: " << time1 << std::endl;
+    }
+    
+    else if (option == 7)
+    {
+        std::cout << "Strassen-Winograd Algorithm is Used" << std::endl;
+        ProgTimer:: Timer timer1;
+        Mult.strassenmultiply();
+        double time1 = timer1.elapsed();
+        Mult.Creturn();
+        std::cout << "Time taken to complete the computation: " << time1 << std::endl;
+    }
+    else if (option == 8)
+    {
+        std::cout << "BLAS Implementation is executed" << std::endl;
+        ProgTimer:: Timer timer1;
+        Mult.Blas();
+        double time1 = timer1.elapsed();
+        Mult.Creturn();
+        std::cout << "Time taken to complete the computation: " << time1 << std::endl;
+    }
     else
     {
-        std::cout << "Naive matrix multiplication is implemented" << std::endl;
-        ProgTimer:: Timer timer4;
-        Mult.naivematrixmultiplyreverseloop();
-        double time4 = timer4.elapsed();
-        std::cout << "Time taken to do Naive Matrix multiplication: " << time4 << std::endl;
+        std::cout <<  "\n\n\n Invalid Option, The program is terminating...." << std::endl;
+        exit(0);
     }
-
-
+    
     #ifdef USE_LIKWID
     likwid_markerStopRegion( "array" );
     likwid_markerClose();
@@ -121,7 +168,9 @@ int main(int argc, char** argv)
 
     Mult.C1().Res().printfile(argv[3]);
 
-
+    
+    //Check the Matrix result for correctness
+    
     /*  siwir::Timer timer6;
     bool result = Mult.Checkresult();
     double time5 = timer6.elapsed();
@@ -134,7 +183,7 @@ int main(int argc, char** argv)
     std::cout << "Time for overall completion of the program: " << time4 << std::endl;
 
 
-    std::cout << "Hurray I think it is completed" << std::endl;
+    std::cout << "Hope It Works Good For You" << std::endl;
     return 0;
     
 }
