@@ -20,7 +20,14 @@ Procedure:
 
 Commands	- make //creates executive file
 		- ./matmult [matrix1] [matrix2] [validation]
+		- make clean
 
 	matrix1 - Input A matrix
 	matrix2 - Input B matrix
 	validation - Result matrix for validation
+
+
+IMPORTANT NOTE:
+Parallelization can increase the speed of computation, but it should be used for sufficiently bigger matrices (i.e. n>10000). Or else the speed will be reduced due to sychronisation.
+
+For other matrices, these memory efficient algorithms provide better results for computing time.
