@@ -165,7 +165,7 @@ int main(int argc, char** argv)
     #endif
 
 
-    Mult.C1().Res().printfile(argv[3]);
+    Mult.C1().Res().printfile("Result");
 
     
     //Check the Matrix result for correctness
