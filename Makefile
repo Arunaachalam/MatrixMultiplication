@@ -28,4 +28,4 @@ $(TARGET).o: $(TARGET).cpp Timer.h Creatematrix.h Filereader.h Matmult.h Matrix.
 	$(CXX) -c $(CXXFLAGS) $(INCLUDES) $(TARGET).cpp
 
 clean:
-	@$(RM) -rf *.o $(TARGET)
+	@$(RM) -rf *.o $(TARGET) Result

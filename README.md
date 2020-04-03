@@ -25,6 +25,7 @@ Commands	- make //creates executive file
 	matrix1 - Input A matrix
 	matrix2 - Input B matrix
 	validation - Result matrix for validation
+	Result	- Result from the computation
 
 
 IMPORTANT NOTE:
